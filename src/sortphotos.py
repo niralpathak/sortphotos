@@ -29,6 +29,9 @@ locale.setlocale(locale.LC_ALL, '')
 
 exiftool_location = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'Image-ExifTool', 'exiftool')
 
+extensions = ('jpg', 'jpeg', 'tiff', 'arw', 'avi', 'mov', 'mpg', 
+    'mp4', 'mts', 'bmp', 'gif', 'mp3', 'thm', 'png', '3gp', '3gpp',
+    'htm', 'pdf', 'doc', 'docx', 'pps')
 
 # -------- convenience methods -------------
 
@@ -133,9 +136,11 @@ def get_oldest_timestamp(data, additional_groups_to_ignore, additional_tags_to_i
 
     # run through all keys
     for key in data.keys():
+        # print("[Debug] \tkey = {}".format(key))
 
         # check if this key needs to be ignored, or is in the set of tags that must be used
         if (key not in ignore_tags) and (key.split(':')[0] not in ignore_groups) and 'GPS' not in key:
+            # print("[Debug] \tkey passed = {}".format(key))
 
             date = data[key]
 
@@ -151,6 +156,7 @@ def get_oldest_timestamp(data, additional_groups_to_ignore, additional_tags_to_i
             except Exception as e:
                 exifdate = None
 
+            # print("[Debug] exifdate = '{}'".format(exifdate))
             if exifdate and exifdate < oldest_date:
                 date_available = True
                 oldest_date = exifdate
@@ -347,6 +353,10 @@ def sortPhotos(src_dir, dest_dir, sort_format, rename_format, recursive=False,
         # ignore hidden files
         if os.path.basename(src_file).startswith('.'):
             print('hidden file.  will be skipped')
+            print()
+            continue
+        if not os.path.basename(src_file).lower().endswith(extensions):
+            print('skipping file: "{}"'.format(src_file))
             print()
             continue
 
