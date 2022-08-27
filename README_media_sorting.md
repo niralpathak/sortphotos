@@ -27,7 +27,7 @@ $ cd /Volumes/Pathak_Fam/Media/_scripts/src
 $ find . -iname '*.zip' -exec sh -c 'unzip -o -d "${0%.*}" "$0"' '{}' ';'
 ### Check with test flag first
 
-$ python3 sortphotos.py -r -t -s /Volumes/Pathak_Fam/Media/Staging\ area\ for\ unsorted/Niral\ iPhone\ Photos\ v2 /Volumes/Pathak_Fam/Media/Media_sorted --ignore-tags IPTC:TimeCreated IPTC:DigitalCreationTime
+$ python3 sortphotos.py -r -t -s /Volumes/Pathak_Fam/Media/Staging\ area\ for\ unsorted/Niral\ iPhone\ Photos\ v2 /Volumes/Pathak_Fam/Media/Media_sorted --ignore-tags IPTC:TimeCreated IPTC:DigitalCreationTime MakerNotes:Time ZIP:ZipModifyDate
 
 
 ```
@@ -35,7 +35,7 @@ $ python3 sortphotos.py -r -t -s /Volumes/Pathak_Fam/Media/Staging\ area\ for\ u
 ### Flags
 
 Always use:
-`--ignore-tags IPTC:TimeCreated IPTC:DigitalCreationTime`
+`--ignore-tags IPTC:TimeCreated IPTC:DigitalCreationTime MakerNotes:Time ZIP:ZipModifyDate`
 
 Also useful:
 `--use-only-tags EXIF:CreateDate EXIF:DateTimeOriginal`

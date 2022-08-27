@@ -31,7 +31,7 @@ exiftool_location = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'I
 
 extensions = ('jpg', 'jpeg', 'tiff', 'arw', 'avi', 'mov', 'mpg', 
     'mp4', 'mts', 'bmp', 'gif', 'mp3', 'thm', 'png', '3gp', '3gpp',
-    'htm', 'pdf', 'doc', 'docx', 'pps')
+    'htm', 'pdf', 'doc', 'docx', 'pps', 'tif', 'ppt', 'divx', 'heic')
 
 # -------- convenience methods -------------
 
